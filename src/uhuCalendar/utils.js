@@ -50,24 +50,31 @@ export const times = [
 export const generateWeekViewCoordinates = (event, startDate) => {
   const start = moment(event.start);
   const end = moment(event.end);
+  const start_day = moment(event.start).format("dd");
+  const end_day = moment(event.end).format("dd");
   const duration = moment.duration(end.diff(start));
   const weekStart = moment(startDate);
-
   // Calculating Top
-  const top = start.minutes() === 30 ? "50%" : "0%";
+  let top = (start.minutes() / 60) * 100;
 
-  // Calculating height
+  //calculating the height of each event highlight in calendar
   const timeFactor = duration.hours() + duration.minutes() / 60;
-  const height = timeFactor * 100;
+  let height;
+  if (start_day === end_day) {
+    height = timeFactor * 100;
+  } else {
+  }
 
   let left, width;
+  //left css of the event calculation
   if (weekStart.week() === start.week()) {
     const weekDay = start.weekday();
     left = (weekDay + 1) * 12.5;
   }
 
+  //calculating width of each new event created when the week is same for start and end day
   if (weekStart.week() === start.week() && weekStart.week() === end.week()) {
-    const daysDiff = duration.days();
+    const daysDiff = duration.days(); // the width of event on basis of days
     width = (daysDiff + 1) * 12.5 - 2;
   }
 
@@ -92,6 +99,7 @@ export const generateWeekViewCoordinates = (event, startDate) => {
   if (weekStart.week() < end.week()) {
     width = 100 - left;
   }
+
   return {
     top: top + "%",
     left: left + "%",

@@ -113,6 +113,7 @@ class WeekView extends Component {
         />
         <WeekHeader weekDays={weekDays} />
         {times.map((time) => (
+          //mapping of timegrid on left to the events on cells
           <TimeSlotGroup
             key={time}
             time={time}

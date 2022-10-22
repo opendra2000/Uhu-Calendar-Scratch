@@ -8,7 +8,6 @@ import moment from "moment";
 function TimeSlotGroup(props) {
   //since we ar taking only hours in consideration here,,, so we extracting hours only from the date
   const formattedTime = moment().set("hours", props.time).format("h a");
-  console.log(formattedTime);
   return (
     <Row type="flex" key={props.time} style={row}>
       <Col style={timeCol} span={3}>

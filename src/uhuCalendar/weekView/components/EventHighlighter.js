@@ -34,7 +34,6 @@ class EventHighlighter extends Component {
 
   //open the edit event modal and initialized the start and end time
   openEditEventModal = () => {
-    console.log(this.props.event.title);
     this.setState({
       showEditEventModal: true,
       eventNewStart: this.props.event.start,
@@ -73,6 +72,8 @@ class EventHighlighter extends Component {
           eventEnd={eventNewEnd}
           onTimeChange={this.onCurrentEventTimeChange}
         />
+
+        {/* div container for the event */}
         <div
           onClick={this.openEditEventModal}
           style={{
@@ -83,6 +84,7 @@ class EventHighlighter extends Component {
             ...eventHighlighter
           }}
         >
+          {/* The text inside event which contains title, start time, and end time */}
           {this.props.event.title} <br />
           <span style={{ fontSize: 10 }}>
             {moment(this.props.event.start).format("hh:mm a")} -{" "}
@@ -95,3 +97,30 @@ class EventHighlighter extends Component {
 }
 
 export default EventHighlighter;
+
+// {moment(this.props.event.start).format("dd") ===
+// moment(this.props.event.end).format("dd") ? (
+// <AddEventModal
+//   editMode={true}
+//   eventTitle={this.props.event.title}
+//   visible={showEditEventModal}
+//   onCancel={this.deleteEvent}
+//   onClose={this.closeModal}
+//   onOk={this.updateEvent}
+//   eventStart={eventNewStart}
+//   eventEnd={eventNewEnd}
+//   onTimeChange={this.onCurrentEventTimeChange}
+// />;
+// ) : (
+//   <AddEventModal
+//     editMode={true}
+//     eventTitle={this.props.event.title}
+//     visible={showEditEventModal}
+//     onCancel={this.deleteEvent}
+//     onClose={this.closeModal}
+//     onOk={this.updateEvent}
+//     eventStart={eventNewStart}
+//     eventEnd={eventNewEnd}
+//     onTimeChange={this.onCurrentEventTimeChange}
+//   />
+// )}

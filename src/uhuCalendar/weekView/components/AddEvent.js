@@ -26,7 +26,7 @@ function AddEvent(props) {
         showTime={{
           format: "HH:mm",
           hourStep: 1,
-          minuteStep: 30,
+          minuteStep: 5,
           defaultValue: [moment(props.start), moment(props.end)]
         }}
         format="MMM Do, YYYY hh:mm a"

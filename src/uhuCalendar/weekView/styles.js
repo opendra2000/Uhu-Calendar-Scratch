@@ -35,7 +35,7 @@ export const weekDates = {
 
 // for each time slot in whole calendar
 export const slot = {
-  height: 70,
+  height: 100,
   cursor: "pointer"
 };
 
@@ -92,6 +92,9 @@ export const inputStyles = {
   marginBottom: 15
 };
 
+export const colorg = {
+  backgroundColor: "red"
+};
 // for previous and next button
 export const weekButtons = {
   paddingRight: 0,
